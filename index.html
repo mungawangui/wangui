@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>prac4</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <style>
+    #map {
+      height: 500px;
+    }
+    .popup-img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+    h3{
+text-align: center;
+    }
+  </style>
+</head>
+<body>
+ >   
+  <div id="map"></div>
+  <script>
+   // Create a Leaflet map instance
+var map = L.map('map').setView([-1.0912,37.0117], 11);
+
+// Add a tile layer to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Define the marker image URL
+var markerImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/JKUAT-Main-Campus-Gate-A.jpg/1280px-JKUAT-Main-Campus-Gate-A.jpg';
+
+// Define a marker and add it to the map
+var marker = L.marker([-1.0912,37.0117]).addTo(map);
+
+// Add a popup with the marker image
+var popupContent = '<img class="popup-img" src="' + markerImg + '">';
+marker.bindPopup(popupContent);
+
+// Add a click event to the marker
+marker.on('click', function() {
+  alert('You clicked the marker!');
+});
+
+  </script>
+</body>
+</html>
